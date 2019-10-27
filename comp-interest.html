@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Compound Interest Calculator</title>
+</head>
+<body>
+	<h3>Initial Value</h3>
+	<input type="text" id="initialValue" onkeyup="myFunction()">
+	<h3>Percent Each Week</h3>
+	<input type="text" id="weekPerc" onkeyup="myFunction()">
+	<h3>Number of Weeks</h3>
+	<input type="text" id="weekNum" onkeyup="myFunction()">
+
+	<br/><br/><br/>
+	<div id="output"></div>
+	
+	<script type="text/javascript">
+	function myFunction() {
+		var initialValue = document.getElementById('initialValue').value;
+		var weekPerc = document.getElementById('weekPerc').value;
+		var weekNum = document.getElementById('weekNum').value;
+		var finalText = '';
+		var output = document.getElementById('output');
+
+		for (i = 1; i < (weekNum+1) / 10; i++) {
+			initialValue = Math.round(initialValue);
+			finalText += 'Week ' + i + ': $' + initialValue + '<br/>';
+			initialValue *= '1.0' + weekPerc;
+		}
+
+		output.innerHTML = finalText;
+	}	
+	</script>
+</body>
+</html>
