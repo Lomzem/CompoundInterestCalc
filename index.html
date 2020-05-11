@@ -27,8 +27,8 @@
 
 		for (i = 1; i < (weekNum+1) / 10; i++) {
 			initialValue = Math.round(initialValue);
-			//initialValue = initialValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-			finalText += 'Week ' + i + ': $' + initialValue + '<br/>';
+			finalText += 'Week ' + i + ': $' + initialValue.toLocaleString() + '<br/>';
+			initialValue += parseFloat(depositPerWeek);
 			initialValue *= (1 + (weekPerc / 100));
 		}
 
