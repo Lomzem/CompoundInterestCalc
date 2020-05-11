@@ -27,7 +27,7 @@
 
 		for (i = 1; i < (weekNum+1) / 10; i++) {
 			initialValue = Math.round(initialValue);
-			finalText += 'Week ' + i + ': $' + initialValue + '<br/>';
+			finalText += 'Week ' + i + ': $' + initialValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '<br/>';
 			initialValue *= (1 + (weekPerc / 100));
 		}
 
