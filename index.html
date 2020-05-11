@@ -28,7 +28,8 @@
 		for (i = 1; i < (weekNum+1) / 10; i++) {
 			initialValue = Math.round(initialValue);
 			finalText += 'Week ' + i + ': $' + initialValue + '<br/>';
-			initialValue = (initialValue + depositPerWeek) * (1 + (weekPerc / 100));
+			initialValue += initialValue + depositPerWeek;
+			initialValue *= (1 + (weekPerc / 100));
 		}
 
 		output.innerHTML = finalText;
