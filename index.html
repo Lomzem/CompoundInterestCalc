@@ -10,6 +10,8 @@
 	<input type="text" id="weekPerc" onkeyup="myFunction()">
 	<h3>Number of Weeks</h3>
 	<input type="text" id="weekNum" onkeyup="myFunction()">
+	<h3>Deposit Per Week</h3>
+	<input type="text" id="depositPerWeek" onkeyup="myFunction()">
 
 	<br/><br/><br/>
 	<div id="output"></div>
@@ -19,13 +21,14 @@
 		var initialValue = document.getElementById('initialValue').value;
 		var weekPerc = document.getElementById('weekPerc').value;
 		var weekNum = document.getElementById('weekNum').value;
+		var depositPerWeek = document.getElementById('depositPerWeek').value;
 		var finalText = '';
 		var output = document.getElementById('output');
 
 		for (i = 1; i < (weekNum+1) / 10; i++) {
 			initialValue = Math.round(initialValue);
 			finalText += 'Week ' + i + ': $' + initialValue + '<br/>';
-			initialValue *= (1 + (weekPerc / 100));
+			initialValue = (initialValue + depositPerWeek) * (1 + (weekPerc / 100));
 		}
 
 		output.innerHTML = finalText;
