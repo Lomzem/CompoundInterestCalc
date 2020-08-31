@@ -24,14 +24,22 @@
 		var depositPerWeek = document.getElementById('depositPerWeek').value;
 		var finalText = '';
 		var output = document.getElementById('output');
+		var oldValue
 
 		if (depositPerWeek == '') {
 			depositPerWeek = 0;
 		}
 
 		for (i = 1; i < (weekNum+1) / 10; i++) {
+			changeValue = initialValue - oldValue;
+			changeValue = +(Math.round(changeValue + "e+2") + "e-2");
 			initialValue = +(Math.round(initialValue + "e+2")  + "e-2");
-			finalText += 'Week ' + i + ': $' + initialValue.toLocaleString() + '<br/>';
+			var oldValue = initialValue;
+			if (i == 1) {
+				finalText += 'Week ' + i + ': $' + initialValue.toLocaleString() + ' +($0)<br/>';
+			} else {
+				finalText += 'Week ' + i + ': $' + initialValue.toLocaleString() + ' +($' + changeValue.toLocaleString() + ')<br/>';
+			}
 			initialValue += parseFloat(depositPerWeek);
 			initialValue *= (1 + (weekPerc / 100));
 		}
